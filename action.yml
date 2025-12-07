@@ -1,0 +1,34 @@
+name: Mastodon Action
+description: A GitHub Action to post new Mastodon status.
+
+inputs:
+  token:
+    description: Mastodon access token
+    required: true
+  instance:
+    description: Mastodon instance URL (e.g., https://mastodon.social)
+    required: false
+    default: https://mastodon.social
+  status:
+    description: The text content of the status to be posted.
+    required: false
+  visibility:
+    description: Visibility of the status (public, unlisted, private, direct)
+    required: false
+    default: public
+
+outputs:
+  id:
+    description: ID of the newly created Mastodon status
+  url:
+    description: URL of the newly created Mastodon status
+  content:
+    description: Content of the newly created Mastodon status
+  created_at:
+    description: Creation timestamp of the newly created Mastodon status
+  visibility:
+    description: Visibility of the newly created Mastodon status
+
+runs:
+  using: node20
+  main: dist/index.js
